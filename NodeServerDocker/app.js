@@ -14,9 +14,11 @@ app.post('/',  (req, res) => {
 	const input = req.query.input;
 
 	let data = {
-		url: `http://localhost:5000/api/flip/${input}`,
+		url: `http://flask:5000/${process.env.API_ENV}/flip/${input}`,
 		headers: { 'Content-Type': 'application/json' },
 	};
+
+	console.log(data)
 
 	request.post(data, (error, response, body) => {
 		let return_json = {

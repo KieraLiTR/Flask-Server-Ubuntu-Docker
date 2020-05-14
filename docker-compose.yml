@@ -1,0 +1,22 @@
+version: "3"
+services:
+    node:
+        image: node-server
+        ports:
+            - "3001:5001"
+        networks:
+            - front-end
+            - back-end
+        env_file:
+            - local.env
+        links:
+            - flask
+
+    flask:
+        image: flask-server
+        networks:
+            - back-end
+
+networks:
+    front-end:
+    back-end:
